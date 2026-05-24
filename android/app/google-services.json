@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865245404436",
+    "project_id": "snappo-60ccc",
+    "storage_bucket": "snappo-60ccc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865245404436:android:8097b76979502a06b57601",
+        "android_client_info": {
+          "package_name": "com.devikumar.snappoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIJqj8frEb23bRruudhwWd1xaUrjSNCsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
