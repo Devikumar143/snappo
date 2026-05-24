@@ -40,22 +40,7 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # ── 6. Generate a debug keystore (not committed to repo) ─────────────
-      - name: Generate debug keystore
-        run: |
-          mkdir -p android/app
-          keytool -genkeypair \
-            -v \
-            -keystore android/app/debug.keystore \
-            -storepass android \
-            -alias androiddebugkey \
-            -keypass android \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Android Debug,O=Android,C=US"
-
-      # ── 7. Grant Gradle wrapper execute permission ───────────────────────
+      # ── 6. Grant Gradle wrapper execute permission ───────────────────────
       - name: Grant Gradle execute permission
         run: chmod +x android/gradlew
 
