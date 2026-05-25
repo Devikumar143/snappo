@@ -40,7 +40,7 @@ export default function CameraScreen() {
             onPress={() => navigation.navigate('FriendSelection', { photoUri: photo.uri })} 
             style={[styles.controlButton, styles.sendButton]}
           >
-            <Text style={styles.text}>Send</Text>
+            <Text style={[styles.text, styles.sendText]}>Send</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -125,11 +125,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   controlButton: {
-    padding: 15,
-    borderRadius: 25,
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 2,
     backgroundColor: 'rgba(0,0,0,0.6)',
+    borderWidth: 1,
+    borderColor: '#222222',
   },
   sendButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#FFFFFF',
+  },
+  sendText: {
+    color: '#000000',
+    fontWeight: '800',
+    letterSpacing: 2,
   }
 });

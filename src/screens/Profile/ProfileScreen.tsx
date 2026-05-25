@@ -28,7 +28,6 @@ export default function ProfileScreen() {
       const auth = await getAuthData();
       setUser(auth.user);
 
-      // Fetch friends list to get exact count
       const response = await api.get('/friends');
       setFriendsCount(response.data.length);
     } catch (error) {
@@ -62,7 +61,7 @@ export default function ProfileScreen() {
   if (loading) {
     return (
       <View style={[styles.container, styles.center]}>
-        <ActivityIndicator size="large" color="#FFFC00" />
+        <ActivityIndicator size="small" color="#FFFFFF" />
       </View>
     );
   }
@@ -72,79 +71,76 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Profile</Text>
+        <Text style={styles.headerTitle}>PROFILE</Text>
         <TouchableOpacity style={styles.logoutIconButton} onPress={handleLogout}>
-          <Feather name="log-out" size={22} color="#FF3B30" />
+          <Feather name="log-out" size={18} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.profileCard}>
-        <View style={styles.avatarGlowContainer}>
-          <View style={styles.avatarContainer}>
-            <Text style={styles.avatarText}>{initials}</Text>
-          </View>
+        <View style={styles.avatarContainer}>
+          <Text style={styles.avatarText}>{initials}</Text>
         </View>
 
         <Text style={styles.usernameText}>@{user?.username || 'snapper'}</Text>
         <Text style={styles.emailText}>{user?.email || 'user@snappo.com'}</Text>
 
         <View style={styles.badge}>
-          <Ionicons name="sparkles" size={14} color="#000" style={{ marginRight: 4 }} />
-          <Text style={styles.badgeText}>Snappo Creator</Text>
+          <Text style={styles.badgeText}>VERIFIED CREATOR</Text>
         </View>
       </View>
 
       <View style={styles.statsContainer}>
         <View style={styles.statBox}>
           <Text style={styles.statCount}>{friendsCount}</Text>
-          <Text style={styles.statLabel}>Friends</Text>
+          <Text style={styles.statLabel}>FRIENDS</Text>
         </View>
         
         <View style={styles.statDivider} />
 
         <View style={styles.statBox}>
           <Text style={styles.statCount}>12</Text>
-          <Text style={styles.statLabel}>Snaps Sent</Text>
+          <Text style={styles.statLabel}>SENT</Text>
         </View>
 
         <View style={styles.statDivider} />
 
         <View style={styles.statBox}>
           <Text style={styles.statCount}>8</Text>
-          <Text style={styles.statLabel}>Received</Text>
+          <Text style={styles.statLabel}>RECEIVED</Text>
         </View>
       </View>
 
       <View style={styles.menuSection}>
-        <Text style={styles.sectionTitle}>Account Settings</Text>
+        <Text style={styles.sectionTitle}>ACCOUNT</Text>
         
         <TouchableOpacity style={styles.menuItem} onPress={() => Alert.alert('Information', 'This feature is coming soon!')}>
           <View style={styles.menuItemLeft}>
-            <Ionicons name="person-outline" size={20} color="#FFFFFF" />
-            <Text style={styles.menuItemText}>Edit Account Info</Text>
+            <Feather name="user" size={16} color="#FFFFFF" style={{ marginRight: 12 }} />
+            <Text style={styles.menuItemText}>Edit Account Details</Text>
           </View>
-          <Ionicons name="chevron-forward" size={18} color="#8E8E93" />
+          <Feather name="chevron-right" size={16} color="#444444" />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menuItem} onPress={() => Alert.alert('Information', 'This feature is coming soon!')}>
           <View style={styles.menuItemLeft}>
-            <Ionicons name="notifications-outline" size={20} color="#FFFFFF" />
+            <Feather name="bell" size={16} color="#FFFFFF" style={{ marginRight: 12 }} />
             <Text style={styles.menuItemText}>Notification Settings</Text>
           </View>
-          <Ionicons name="chevron-forward" size={18} color="#8E8E93" />
+          <Feather name="chevron-right" size={16} color="#444444" />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menuItem} onPress={() => Alert.alert('Information', 'This feature is coming soon!')}>
           <View style={styles.menuItemLeft}>
-            <Ionicons name="shield-checkmark-outline" size={20} color="#FFFFFF" />
+            <Feather name="lock" size={16} color="#FFFFFF" style={{ marginRight: 12 }} />
             <Text style={styles.menuItemText}>Privacy & Security</Text>
           </View>
-          <Ionicons name="chevron-forward" size={18} color="#8E8E93" />
+          <Feather name="chevron-right" size={16} color="#444444" />
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.logoutButtonText}>Log Out</Text>
+        <Text style={styles.logoutButtonText}>LOG OUT</Text>
       </TouchableOpacity>
     </View>
   );
@@ -154,7 +150,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
   },
   center: {
     justifyContent: 'center',
@@ -165,82 +161,77 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: Platform.OS === 'ios' ? 60 : 40,
-    paddingBottom: 20,
+    paddingBottom: 25,
   },
   headerTitle: {
-    fontSize: 28,
-    fontWeight: '950',
+    fontSize: 16,
+    fontWeight: '300',
     color: '#FFFFFF',
-    letterSpacing: 0.5,
+    letterSpacing: 4,
   },
   logoutIconButton: {
     padding: 8,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 59, 48, 0.1)',
   },
   profileCard: {
     alignItems: 'center',
-    backgroundColor: '#1C1C1E',
-    borderRadius: 24,
-    paddingVertical: 30,
-    paddingHorizontal: 20,
+    paddingVertical: 35,
     borderWidth: 1,
-    borderColor: '#2C2C2E',
+    borderColor: '#111111',
+    backgroundColor: '#050505',
+    borderRadius: 2,
     marginBottom: 20,
   },
-  avatarGlowContainer: {
-    padding: 4,
-    borderRadius: 50,
-    backgroundColor: '#FFFC00', // yellow glow ring
-    marginBottom: 15,
-  },
   avatarContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     backgroundColor: '#000000',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#1C1C1E',
-  },
-  avatarText: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#FFFC00',
-  },
-  usernameText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  emailText: {
-    fontSize: 14,
-    color: '#8E8E93',
+    borderWidth: 1,
+    borderColor: '#222222',
     marginBottom: 15,
   },
+  avatarText: {
+    fontSize: 22,
+    fontWeight: '300',
+    color: '#FFFFFF',
+    letterSpacing: 1.5,
+  },
+  usernameText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    marginBottom: 4,
+    letterSpacing: 0.5,
+  },
+  emailText: {
+    fontSize: 12,
+    color: '#555555',
+    marginBottom: 15,
+    letterSpacing: 0.5,
+  },
   badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFC00',
+    borderWidth: 1,
+    borderColor: '#333333',
     paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
+    paddingVertical: 4,
+    borderRadius: 1,
   },
   badgeText: {
-    color: '#000000',
-    fontSize: 12,
-    fontWeight: 'bold',
+    color: '#888888',
+    fontSize: 9,
+    fontWeight: '700',
+    letterSpacing: 2,
   },
   statsContainer: {
     flexDirection: 'row',
-    backgroundColor: '#1C1C1E',
-    borderRadius: 20,
-    paddingVertical: 18,
     borderWidth: 1,
-    borderColor: '#2C2C2E',
-    marginBottom: 25,
+    borderColor: '#111111',
+    backgroundColor: '#050505',
+    borderRadius: 2,
+    paddingVertical: 20,
+    marginBottom: 30,
     justifyContent: 'space-around',
     alignItems: 'center',
   },
@@ -249,65 +240,63 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   statCount: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '600',
     color: '#FFFFFF',
+    letterSpacing: 0.5,
   },
   statLabel: {
-    fontSize: 12,
-    color: '#8E8E93',
-    marginTop: 4,
+    fontSize: 9,
+    color: '#555555',
+    marginTop: 6,
+    letterSpacing: 1.5,
   },
   statDivider: {
     width: 1,
-    height: 30,
-    backgroundColor: '#2C2C2E',
+    height: 20,
+    backgroundColor: '#151515',
   },
   menuSection: {
-    marginBottom: 25,
+    marginBottom: 30,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#8E8E93',
-    marginBottom: 12,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#444444',
+    marginBottom: 15,
+    letterSpacing: 2,
   },
   menuItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#1C1C1E',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#2C2C2E',
-    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#111111',
+    paddingVertical: 14,
+    marginBottom: 5,
   },
   menuItemLeft: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   menuItemText: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: '600',
-    marginLeft: 12,
+    color: '#CCCCCC',
+    fontSize: 14,
+    fontWeight: '300',
+    letterSpacing: 0.5,
   },
   logoutButton: {
-    backgroundColor: 'rgba(255, 59, 48, 0.1)',
-    borderRadius: 16,
-    paddingVertical: 16,
-    alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 59, 48, 0.2)',
+    borderColor: '#333333',
+    borderRadius: 2,
+    paddingVertical: 15,
+    alignItems: 'center',
     marginBottom: 30,
   },
   logoutButtonText: {
-    color: '#FF3B30',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 3,
   },
 });
